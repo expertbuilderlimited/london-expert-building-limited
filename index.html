@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Works - Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- AOS CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Header with logo and title -->
+    <header data-aos="fade-down">
+        <img src="media/logo.jpg" alt="Logo" class="logo">
+        <h1>My Works</h1>
+        <p>Unique and high-quality creations</p>
+    </header>
+
+    <main>
+        <!-- Photo Gallery -->
+        <section class="gallery">
+            <h2 data-aos="fade-right">Photos</h2>
+            <div class="grid">
+                <img src="media/photo1.jpg" alt="Work 1" onclick="openLightbox(this.src)" data-aos="fade-up">
+                <img src="media/photo2.jpg" alt="Work 2" onclick="openLightbox(this.src)" data-aos="fade-up" data-aos-delay="100">
+                <img src="media/photo3.jpg" alt="Work 3" onclick="openLightbox(this.src)" data-aos="fade-up" data-aos-delay="200">
+                <img src="media/photo4.jpg" alt="Work 4" onclick="openLightbox(this.src)" data-aos="fade-up" data-aos-delay="300">
+                <img src="media/photo5.jpg" alt="Work 5" onclick="openLightbox(this.src)" data-aos="fade-up" data-aos-delay="400">
+                <img src="media/photo6.jpg" alt="Work 6" onclick="openLightbox(this.src)" data-aos="fade-up" data-aos-delay="500">
+                <img src="media/photo7.jpg" alt="Work 7" onclick="openLightbox(this.src)" data-aos="fade-up" data-aos-delay="600">
+                <img src="media/photo8.jpg" alt="Work 8" onclick="openLightbox(this.src)" data-aos="fade-up" data-aos-delay="700">
+            </div>
+        </section>
+
+        <!-- Link to Videos Page -->
+        <section class="videos-link" data-aos="zoom-in">
+            <a href="videos.html" class="btn">View My Videos</a>
+        </section>
+    </main>
+
+    <!-- Contact Section -->
+    <section class="contact" data-aos="fade-up">
+        <h2>Contact</h2>
+        <p>Email: <a href="mailto:safi79640@gmail.com">safi79640@gmail.com</a></p>
+        <p>Phone: <a href="tel:+447375070957">+44 7375 070957</a></p>
+    </section>
+
+    <footer data-aos="fade-up">
+        <p>© 2025 - My Works</p>
+    </footer>
+
+    <!-- Lightbox -->
+    <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+        <img id="lightbox-img" src="" alt="">
+    </div>
+
+    <script src="script.js"></script>
+    <!-- AOS JS -->
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 1200,
+            once: true
+        });
+    </script>
+</body>
+</html>
