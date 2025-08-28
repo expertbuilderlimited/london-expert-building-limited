@@ -8,10 +8,12 @@ body {
 
 /* Header */
 header {
-    background: black;
+    background: url("media/banner1.jpg") no-repeat center center;
+    background-size: cover;
     color: white;
     text-align: center;
-    padding: 2em 1em;
+    padding: 4em 1em;
+    position: relative;
 }
 .logo {
     width: 100px;
@@ -116,3 +118,4 @@ footer {
     transform: scale(1.05);
     background: #a97d2e;
 }
+
