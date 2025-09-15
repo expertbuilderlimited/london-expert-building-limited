@@ -15,85 +15,22 @@ body {
   line-height: 1.6;
   -webkit-font-smoothing:antialiased;
   -moz-osx-font-smoothing:grayscale;
-  padding-top: 72px; /* space for fixed navbar */
 }
 
 /* Accessibility: hide text but keep for screen readers */
 .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); border: 0; }
 
-/* Navigation */
-.navbar {
-  position: fixed;
-  top: 0; left: 0;
+/* --- Banner Header --- */
+.banner-header {
   width: 100%;
-  background: white;
-  border-bottom: 1px solid #eee;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0.8em 1.5em;
-  z-index: 1000;
-}
-.nav-brand { display: flex; align-items: center; gap: 0.6rem; text-decoration: none; }
-.nav-logo { height: 36px; width: auto; display: block; }
-.nav-links {
-  list-style: none;
-  display: flex;
-  gap: 1.25rem;
-  margin: 0;
-  padding: 0;
-}
-.nav-links li a {
-  text-decoration: none;
-  color: var(--text);
-  font-weight: 500;
-  transition: color 0.25s;
-}
-.nav-links li a:hover { color: var(--accent); }
-.nav-toggle {
-  display: none;
-  font-size: 1.5em;
-  background: none;
-  border: none;
-  cursor: pointer;
-}
-
-/* Hero */
-.hero, .comments-hero {
-  height: 46vh;
-  min-height: 220px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  color: white;
-  padding: 0 1em;
-  position: relative;
   overflow: hidden;
-  background: linear-gradient(180deg, rgba(0,0,0,0.25), rgba(0,0,0,0.25)), url("media/photo1.jpg") center/cover no-repeat;
 }
-.hero-overlay{
-  position:absolute; inset:0; background: rgba(0,0,0,0.25);
-}
-.hero-text { position: relative; z-index: 2; max-width: 1100px; color: #fff; display: flex; flex-direction: column; align-items: center; }
-
-/* MAIN-LOGO in hero */
-.hero-main-logo {
-  width: 120px;
+.banner-img {
+  width: 100%;
   height: auto;
-  margin-bottom: 0.9rem;
-  border-radius: 6px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.25);
-  background: rgba(255,255,255,0.02);
+  display: block;
+  object-fit: cover;
 }
-
-/* fallback small hero title styles */
-.hero-text h1 {
-  font-family: 'Playfair Display', serif;
-  font-size: 2.2rem;
-  margin: 0 0 0.4rem;
-}
-.hero-text p { font-size: 1rem; font-weight: 300; margin:0; }
 
 /* Main sections */
 main {
@@ -282,24 +219,9 @@ footer {
   .reviews-panel { width: 100%; max-height: 40vh; margin-top: 1rem; }
   .comment-item { flex-direction: row; gap: 0.8rem; }
   .comment-thumb { width: 85px; height: 62px; }
-  .hero-main-logo { width: 96px; margin-bottom: 0.6rem; }
 }
 
-/* Responsive nav */
+/* Smaller screens */
 @media (max-width: 768px) {
-  .nav-links {
-    display: none;
-    flex-direction: column;
-    background: white;
-    position: absolute;
-    top: 56px;
-    right: 0;
-    width: 220px;
-    padding: 1em;
-    box-shadow: 0 6px 20px rgba(0,0,0,0.08);
-  }
-  .nav-links.active { display:flex; }
-  .nav-toggle { display: block; }
-  .hero { height: 40vh; min-height: 220px; }
-  body { padding-top: 64px; }
+  body { padding-top: 0; }
 }
