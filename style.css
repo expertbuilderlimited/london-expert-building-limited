@@ -75,7 +75,19 @@ body {
 .hero-overlay{
   position:absolute; inset:0; background: rgba(0,0,0,0.25);
 }
-.hero-text { position: relative; z-index: 2; max-width: 1100px; color: #fff; }
+.hero-text { position: relative; z-index: 2; max-width: 1100px; color: #fff; display: flex; flex-direction: column; align-items: center; }
+
+/* MAIN-LOGO in hero */
+.hero-main-logo {
+  width: 120px;
+  height: auto;
+  margin-bottom: 0.9rem;
+  border-radius: 6px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+  background: rgba(255,255,255,0.02);
+}
+
+/* fallback small hero title styles */
 .hero-text h1 {
   font-family: 'Playfair Display', serif;
   font-size: 2.2rem;
@@ -270,6 +282,7 @@ footer {
   .reviews-panel { width: 100%; max-height: 40vh; margin-top: 1rem; }
   .comment-item { flex-direction: row; gap: 0.8rem; }
   .comment-thumb { width: 85px; height: 62px; }
+  .hero-main-logo { width: 96px; margin-bottom: 0.6rem; }
 }
 
 /* Responsive nav */
