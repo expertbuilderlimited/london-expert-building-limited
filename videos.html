@@ -1,52 +1,94 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Videos - Portfolio</title>
-    <link rel="stylesheet" href="style.css">
-    <!-- AOS CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Videos - My Works</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- Header -->
-    <header data-aos="fade-down">
-        <img src="media/logo.jpg" alt="Logo" class="logo">
-        <h1>My Videos</h1>
-        <p>Creative and high-quality productions</p>
-    </header>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="nav-brand">My Works</div>
+    <button class="nav-toggle" aria-label="Toggle menu" onclick="toggleMenu()">☰</button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html#hero">Home</a></li>
+      <li><a href="index.html#projects">Projects</a></li>
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="videos.html">Videos</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+    </ul>
+  </nav>
 
-    <main>
-        <!-- Video Gallery -->
-        <section class="gallery">
-            <h2 data-aos="fade-left">Videos</h2>
-            <div class="grid">
-                <video src="media/video1.mp4" controls data-aos="zoom-in"></video>
-                <video src="media/video2.mp4" controls data-aos="zoom-in" data-aos-delay="100"></video>
-                <video src="media/video3.mp4" controls data-aos="zoom-in" data-aos-delay="200"></video>
-                <video src="media/video4.mp4" controls data-aos="zoom-in" data-aos-delay="300"></video>
-                <video src="media/video5.mp4" controls data-aos="zoom-in" data-aos-delay="400"></video>
-                <video src="media/video6.mp4" controls data-aos="zoom-in" data-aos-delay="500"></video>
-            </div>
-        </section>
+  <!-- Hero -->
+  <section class="hero videos-hero" data-aos="fade-in">
+    <div class="hero-overlay"></div>
+    <div class="hero-text">
+      <h1>Selected Videos</h1>
+      <p>A curated selection of recent video work</p>
+    </div>
+  </section>
 
-        <!-- Back to Home -->
-        <section class="videos-link" data-aos="zoom-in">
-            <a href="index.html" class="btn">← Back to Photos</a>
-        </section>
-    </main>
+  <main>
+    <section class="projects" id="videoProjects">
+      <h2 data-aos="fade-up">Video Gallery</h2>
 
-    <footer data-aos="fade-up">
-        <p>© 2025 - My Works</p>
-    </footer>
+      <div class="grid videos-grid">
+        <div class="video-card" data-key="video1.mp4" data-aos="zoom-in">
+          <video muted loop playsinline preload="metadata" onclick="openVideoLightbox('media/video1.mp4', this.dataset.key)">
+            <source src="media/video1.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
 
-    <!-- AOS JS -->
-    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
-    <script>
-        AOS.init({
-            duration: 1200,
-            once: true
-        });
-    </script>
+        <div class="video-card" data-key="video2.mp4" data-aos="zoom-in" data-aos-delay="100">
+          <video muted loop playsinline preload="metadata" onclick="openVideoLightbox('media/video2.mp4', this.dataset.key)">
+            <source src="media/video2.mp4" type="video/mp4">
+          </video>
+        </div>
+
+        <div class="video-card" data-key="video3.mp4" data-aos="zoom-in" data-aos-delay="200">
+          <video muted loop playsinline preload="metadata" onclick="openVideoLightbox('media/video3.mp4', this.dataset.key)">
+            <source src="media/video3.mp4" type="video/mp4">
+          </video>
+        </div>
+
+        <div class="video-card" data-key="video4.mp4" data-aos="zoom-in" data-aos-delay="300">
+          <video muted loop playsinline preload="metadata" onclick="openVideoLightbox('media/video4.mp4', this.dataset.key)">
+            <source src="media/video4.mp4" type="video/mp4">
+          </video>
+        </div>
+        <!-- add more video cards as needed -->
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 - My Works</p>
+  </footer>
+
+  <!-- Image Lightbox (kept in case you want to open images from this page) -->
+  <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+    <div class="lightbox-inner" onclick="event.stopPropagation()">
+      <img id="lightbox-img" src="" alt="">
+      <div id="reviews-panel" class="reviews-panel" onclick="event.stopPropagation()"></div>
+    </div>
+  </div>
+
+  <!-- Video Lightbox -->
+  <div id="videoLightbox" class="lightbox" onclick="closeVideoLightbox()">
+    <div class="lightbox-inner" onclick="event.stopPropagation()">
+      <video id="lightbox-video" controls playsinline></video>
+      <div id="reviews-panel-video" class="reviews-panel" onclick="event.stopPropagation()"></div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init({ duration: 1200, once: true });
+  </script>
 </body>
 </html>
