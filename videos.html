@@ -37,30 +37,31 @@
 
       <div class="grid videos-grid">
         <div class="video-card" data-key="video1.mp4" data-aos="zoom-in">
-          <video muted loop playsinline preload="metadata" onclick="openVideoLightbox('media/video1.mp4', this.dataset.key)">
+          <!-- data-key moved to the video element for reliability -->
+          <video data-key="video1.mp4" muted loop playsinline preload="metadata" onclick="openVideoLightbox('media/video1.mp4', this.dataset.key)">
             <source src="media/video1.mp4" type="video/mp4">
             Your browser does not support the video tag.
           </video>
         </div>
 
         <div class="video-card" data-key="video2.mp4" data-aos="zoom-in" data-aos-delay="100">
-          <video muted loop playsinline preload="metadata" onclick="openVideoLightbox('media/video2.mp4', this.dataset.key)">
+          <video data-key="video2.mp4" muted loop playsinline preload="metadata" onclick="openVideoLightbox('media/video2.mp4', this.dataset.key)">
             <source src="media/video2.mp4" type="video/mp4">
           </video>
         </div>
 
         <div class="video-card" data-key="video3.mp4" data-aos="zoom-in" data-aos-delay="200">
-          <video muted loop playsinline preload="metadata" onclick="openVideoLightbox('media/video3.mp4', this.dataset.key)">
+          <video data-key="video3.mp4" muted loop playsinline preload="metadata" onclick="openVideoLightbox('media/video3.mp4', this.dataset.key)">
             <source src="media/video3.mp4" type="video/mp4">
           </video>
         </div>
 
         <div class="video-card" data-key="video4.mp4" data-aos="zoom-in" data-aos-delay="300">
-          <video muted loop playsinline preload="metadata" onclick="openVideoLightbox('media/video4.mp4', this.dataset.key)">
+          <video data-key="video4.mp4" muted loop playsinline preload="metadata" onclick="openVideoLightbox('media/video4.mp4', this.dataset.key)">
             <source src="media/video4.mp4" type="video/mp4">
           </video>
         </div>
-        <!-- add more video cards as needed -->
+        <!-- add more video cards as needed (video5, video6, ...) -->
       </div>
     </section>
   </main>
