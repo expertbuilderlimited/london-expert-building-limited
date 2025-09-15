@@ -191,3 +191,74 @@ function handleContact(event) {
   const mailto = `mailto:${to}?subject=${subject}&body=${body}`;
   window.location.href = mailto;
 }
+
+/* ------------------ COMMENTS PAGE RENDERER ------------------
+   Renders a simple list of all works with up to two comments each.
+   For thumbnails: photos use their files; videos use a mapped photo thumbnail (simple approach).
+*/
+function renderCommentsPage() {
+  const list = document.getElementById('commentsList');
+  if (!list) return;
+
+  // Define order & mapping thumbnails for videos -> use photo1..photo4 as simple thumbnails
+  const items = [
+    { key: 'photo1.jpg', title: 'Work 1', thumb: 'media/photo1.jpg' },
+    { key: 'photo2.jpg', title: 'Work 2', thumb: 'media/photo2.jpg' },
+    { key: 'photo3.jpg', title: 'Work 3', thumb: 'media/photo3.jpg' },
+    { key: 'photo4.jpg', title: 'Work 4', thumb: 'media/photo4.jpg' },
+    { key: 'photo5.jpg', title: 'Work 5', thumb: 'media/photo5.jpg' },
+    { key: 'photo6.jpg', title: 'Work 6', thumb: 'media/photo6.jpg' },
+    { key: 'photo7.jpg', title: 'Work 7', thumb: 'media/photo7.jpg' },
+    { key: 'photo8.jpg', title: 'Work 8', thumb: 'media/photo8.jpg' },
+    // videos shown as works with thumbnail fallback to photos (simple and generic)
+    { key: 'video1.mp4', title: 'Video 1', thumb: 'media/photo1.jpg' },
+    { key: 'video2.mp4', title: 'Video 2', thumb: 'media/photo2.jpg' },
+    { key: 'video3.mp4', title: 'Video 3', thumb: 'media/photo3.jpg' },
+    { key: 'video4.mp4', title: 'Video 4', thumb: 'media/photo4.jpg' }
+  ];
+
+  list.innerHTML = '';
+  items.forEach(item => {
+    const container = document.createElement('div');
+    container.className = 'comment-item';
+
+    const thumb = document.createElement('div');
+    thumb.className = 'comment-thumb';
+    const img = document.createElement('img');
+    img.src = item.thumb;
+    img.alt = item.title;
+    thumb.appendChild(img);
+
+    const body = document.createElement('div');
+    body.className = 'comment-body';
+    const title = document.createElement('div');
+    title.className = 'comment-title';
+    title.textContent = item.title;
+    body.appendChild(title);
+
+    const commentList = document.createElement('div');
+    commentList.className = 'comment-list';
+
+    const reviews = reviewsData[item.key] || [];
+    // Show up to two comments. If none, show placeholder text.
+    if (reviews.length === 0) {
+      const p = document.createElement('div');
+      p.className = 'single-comment';
+      p.textContent = 'No comments yet.';
+      commentList.appendChild(p);
+    } else {
+      for (let i = 0; i < Math.min(2, reviews.length); i++) {
+        const r = reviews[i];
+        const p = document.createElement('div');
+        p.className = 'single-comment';
+        p.textContent = `${r.reviewer}: ${r.comment}`;
+        commentList.appendChild(p);
+      }
+    }
+
+    body.appendChild(commentList);
+    container.appendChild(thumb);
+    container.appendChild(body);
+    list.appendChild(container);
+  });
+}
