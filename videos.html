@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1"/>
-  <title>Videos - My Works</title>
+  <title>Comments - My Works</title>
   <link rel="stylesheet" href="style.css" />
   <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
@@ -11,57 +11,36 @@
 <body>
   <!-- Navigation -->
   <nav class="navbar">
-    <div class="nav-brand">My Works</div>
+    <a class="nav-brand" href="index.html">
+      <img src="media/logo1.jpg" alt="Logo" class="nav-logo">
+      <span class="sr-only">My Works</span>
+    </a>
+
     <button class="nav-toggle" aria-label="Toggle menu" onclick="toggleMenu()">☰</button>
     <ul class="nav-links" id="navLinks">
       <li><a href="index.html#hero">Home</a></li>
       <li><a href="index.html#projects">Projects</a></li>
       <li><a href="index.html#about">About</a></li>
-      <li><a href="videos.html">Videos</a></li>
+      <li><a href="videos.html">Comments</a></li>
       <li><a href="index.html#contact">Contact</a></li>
     </ul>
   </nav>
 
-  <!-- Hero -->
-  <section class="hero videos-hero" data-aos="fade-in">
+  <!-- Simple Hero -->
+  <section class="hero comments-hero" data-aos="fade-in">
     <div class="hero-overlay"></div>
     <div class="hero-text">
-      <h1>Selected Videos</h1>
-      <p>A curated selection of recent video work</p>
+      <h1>Comments on Works</h1>
+      <p>Two short comments shown for each work below.</p>
     </div>
   </section>
 
   <main>
-    <section class="projects" id="videoProjects">
-      <h2 data-aos="fade-up">Video Gallery</h2>
+    <section class="comments-section" id="commentsSection">
+      <h2 data-aos="fade-up">All Works — Comments</h2>
 
-      <div class="grid videos-grid">
-        <div class="video-card" data-key="video1.mp4" data-aos="zoom-in">
-          <!-- data-key moved to the video element for reliability -->
-          <video data-key="video1.mp4" muted loop playsinline preload="metadata" onclick="openVideoLightbox('media/video1.mp4', this.dataset.key)">
-            <source src="media/video1.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-          </video>
-        </div>
-
-        <div class="video-card" data-key="video2.mp4" data-aos="zoom-in" data-aos-delay="100">
-          <video data-key="video2.mp4" muted loop playsinline preload="metadata" onclick="openVideoLightbox('media/video2.mp4', this.dataset.key)">
-            <source src="media/video2.mp4" type="video/mp4">
-          </video>
-        </div>
-
-        <div class="video-card" data-key="video3.mp4" data-aos="zoom-in" data-aos-delay="200">
-          <video data-key="video3.mp4" muted loop playsinline preload="metadata" onclick="openVideoLightbox('media/video3.mp4', this.dataset.key)">
-            <source src="media/video3.mp4" type="video/mp4">
-          </video>
-        </div>
-
-        <div class="video-card" data-key="video4.mp4" data-aos="zoom-in" data-aos-delay="300">
-          <video data-key="video4.mp4" muted loop playsinline preload="metadata" onclick="openVideoLightbox('media/video4.mp4', this.dataset.key)">
-            <source src="media/video4.mp4" type="video/mp4">
-          </video>
-        </div>
-        <!-- add more video cards as needed (video5, video6, ...) -->
+      <div id="commentsList" class="comments-list" data-aos="fade-up">
+        <!-- JS will inject a simple list: thumbnail + two comments -->
       </div>
     </section>
   </main>
@@ -70,26 +49,14 @@
     <p>© 2025 - My Works</p>
   </footer>
 
-  <!-- Image Lightbox (kept in case you want to open images from this page) -->
-  <div id="lightbox" class="lightbox" onclick="closeLightbox()">
-    <div class="lightbox-inner" onclick="event.stopPropagation()">
-      <img id="lightbox-img" src="" alt="">
-      <div id="reviews-panel" class="reviews-panel" onclick="event.stopPropagation()"></div>
-    </div>
-  </div>
-
-  <!-- Video Lightbox -->
-  <div id="videoLightbox" class="lightbox" onclick="closeVideoLightbox()">
-    <div class="lightbox-inner" onclick="event.stopPropagation()">
-      <video id="lightbox-video" controls playsinline></video>
-      <div id="reviews-panel-video" class="reviews-panel" onclick="event.stopPropagation()"></div>
-    </div>
-  </div>
-
   <script src="script.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
   <script>
-    AOS.init({ duration: 1200, once: true });
+    // When this page loads, render the comments list using the shared reviewsData
+    document.addEventListener('DOMContentLoaded', () => {
+      if (typeof renderCommentsPage === 'function') {
+        renderCommentsPage();
+      }
+    });
   </script>
 </body>
 </html>
