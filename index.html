@@ -12,13 +12,17 @@
 <body>
   <!-- Navigation -->
   <nav class="navbar">
-    <div class="nav-brand">My Works</div>
+    <a class="nav-brand" href="index.html">
+      <img src="media/logo1.jpg" alt="Logo" class="nav-logo">
+      <span class="sr-only">My Works</span>
+    </a>
+
     <button class="nav-toggle" aria-label="Toggle menu" onclick="toggleMenu()">☰</button>
     <ul class="nav-links" id="navLinks">
       <li><a href="#hero">Home</a></li>
       <li><a href="#projects">Projects</a></li>
       <li><a href="#about">About</a></li>
-      <li><a href="videos.html">Videos</a></li>
+      <li><a href="videos.html">Comments</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
   </nav>
@@ -91,7 +95,7 @@
     </div>
   </div>
 
-  <!-- Video Lightbox -->
+  <!-- Video Lightbox (kept in case used elsewhere) -->
   <div id="videoLightbox" class="lightbox" onclick="closeVideoLightbox()">
     <div class="lightbox-inner" onclick="event.stopPropagation()">
       <video id="lightbox-video" controls playsinline></video>
