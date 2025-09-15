@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>My Works - Portfolio</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css" />
   <!-- AOS CSS -->
   <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
@@ -13,7 +13,7 @@
   <!-- Navigation -->
   <nav class="navbar">
     <div class="nav-brand">My Works</div>
-    <button class="nav-toggle" onclick="toggleMenu()">☰</button>
+    <button class="nav-toggle" aria-label="Toggle menu" onclick="toggleMenu()">☰</button>
     <ul class="nav-links" id="navLinks">
       <li><a href="#hero">Home</a></li>
       <li><a href="#projects">Projects</a></li>
@@ -25,9 +25,10 @@
 
   <!-- Hero Section -->
   <section class="hero" id="hero" data-aos="fade-in">
+    <div class="hero-overlay"></div>
     <div class="hero-text">
-      <h1>Unique and High-Quality Creations</h1>
-      <p>Photography | Videos | Design</p>
+      <h1>Unique &amp; High-Quality Creations</h1>
+      <p>Photography · Videos · Design</p>
     </div>
   </section>
 
@@ -36,14 +37,14 @@
     <section class="projects" id="projects">
       <h2 data-aos="fade-up">Recent Projects</h2>
       <div class="grid">
-        <img src="media/photo1.jpg" alt="Work 1" onclick="openLightbox(this.src)" data-aos="zoom-in">
-        <img src="media/photo2.jpg" alt="Work 2" onclick="openLightbox(this.src)" data-aos="zoom-in" data-aos-delay="100">
-        <img src="media/photo3.jpg" alt="Work 3" onclick="openLightbox(this.src)" data-aos="zoom-in" data-aos-delay="200">
-        <img src="media/photo4.jpg" alt="Work 4" onclick="openLightbox(this.src)" data-aos="zoom-in" data-aos-delay="300">
-        <img src="media/photo5.jpg" alt="Work 5" onclick="openLightbox(this.src)" data-aos="zoom-in" data-aos-delay="400">
-        <img src="media/photo6.jpg" alt="Work 6" onclick="openLightbox(this.src)" data-aos="zoom-in" data-aos-delay="500">
-        <img src="media/photo7.jpg" alt="Work 7" onclick="openLightbox(this.src)" data-aos="zoom-in" data-aos-delay="600">
-        <img src="media/photo8.jpg" alt="Work 8" onclick="openLightbox(this.src)" data-aos="zoom-in" data-aos-delay="700">
+        <img src="media/photo1.jpg" alt="Work 1" data-key="photo1.jpg" onclick="openLightbox(this.src, this.dataset.key)" data-aos="zoom-in">
+        <img src="media/photo2.jpg" alt="Work 2" data-key="photo2.jpg" onclick="openLightbox(this.src, this.dataset.key)" data-aos="zoom-in" data-aos-delay="100">
+        <img src="media/photo3.jpg" alt="Work 3" data-key="photo3.jpg" onclick="openLightbox(this.src, this.dataset.key)" data-aos="zoom-in" data-aos-delay="200">
+        <img src="media/photo4.jpg" alt="Work 4" data-key="photo4.jpg" onclick="openLightbox(this.src, this.dataset.key)" data-aos="zoom-in" data-aos-delay="300">
+        <img src="media/photo5.jpg" alt="Work 5" data-key="photo5.jpg" onclick="openLightbox(this.src, this.dataset.key)" data-aos="zoom-in" data-aos-delay="400">
+        <img src="media/photo6.jpg" alt="Work 6" data-key="photo6.jpg" onclick="openLightbox(this.src, this.dataset.key)" data-aos="zoom-in" data-aos-delay="500">
+        <img src="media/photo7.jpg" alt="Work 7" data-key="photo7.jpg" onclick="openLightbox(this.src, this.dataset.key)" data-aos="zoom-in" data-aos-delay="600">
+        <img src="media/photo8.jpg" alt="Work 8" data-key="photo8.jpg" onclick="openLightbox(this.src, this.dataset.key)" data-aos="zoom-in" data-aos-delay="700">
       </div>
     </section>
 
@@ -60,14 +61,18 @@
   <!-- Contact Section -->
   <section class="contact" id="contact" data-aos="fade-up">
     <h2>Contact</h2>
-    <form class="contact-form">
-      <input type="text" name="name" placeholder="Your Name" required>
-      <input type="email" name="email" placeholder="Your Email" required>
-      <textarea name="message" placeholder="Your Message" required></textarea>
+    <!-- This form uses client-side JS to open the user's email client with a pre-filled message. -->
+    <form class="contact-form" onsubmit="handleContact(event)" id="contactForm">
+      <input id="c_name" type="text" name="name" placeholder="Your Name" required>
+      <input id="c_email" type="email" name="email" placeholder="Your Email" required>
+      <textarea id="c_message" name="message" placeholder="Your Message" required></textarea>
       <button type="submit" class="btn">Send Message</button>
     </form>
+
     <p class="alt-contact">
-      Or reach me directly at <a href="mailto:safi79640@gmail.com">safi79640@gmail.com</a> | 
+      Or reach me directly at
+      <a href="mailto:expertbuilder999uk@gmail.com">expertbuilder999uk@gmail.com</a>
+      |
       <a href="tel:+447375070957">+44 7375 070957</a>
     </p>
   </section>
@@ -76,9 +81,24 @@
     <p>© 2025 - My Works</p>
   </footer>
 
-  <!-- Lightbox -->
+  <!-- Image Lightbox -->
   <div id="lightbox" class="lightbox" onclick="closeLightbox()">
-    <img id="lightbox-img" src="" alt="">
+    <div class="lightbox-inner" onclick="event.stopPropagation()">
+      <img id="lightbox-img" src="" alt="">
+      <div id="reviews-panel" class="reviews-panel" onclick="event.stopPropagation()">
+        <!-- Reviews will be injected here -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Video Lightbox -->
+  <div id="videoLightbox" class="lightbox" onclick="closeVideoLightbox()">
+    <div class="lightbox-inner" onclick="event.stopPropagation()">
+      <video id="lightbox-video" controls playsinline></video>
+      <div id="reviews-panel-video" class="reviews-panel" onclick="event.stopPropagation()">
+        <!-- Video reviews injected here -->
+      </div>
+    </div>
   </div>
 
   <script src="script.js"></script>
