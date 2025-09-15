@@ -10,34 +10,10 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 <body>
-  <!-- Navigation -->
-  <nav class="navbar">
-    <a class="nav-brand" href="index.html">
-      <img src="media/logo1.jpg" alt="Logo" class="nav-logo">
-      <span class="sr-only">My Works</span>
-    </a>
-
-    <button class="nav-toggle" aria-label="Toggle menu" onclick="toggleMenu()">☰</button>
-    <ul class="nav-links" id="navLinks">
-      <li><a href="#hero">Home</a></li>
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="videos.html">Comments</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-  </nav>
-
-  <!-- Hero Section -->
-  <section class="hero" id="hero" data-aos="fade-in">
-    <div class="hero-overlay"></div>
-
-    <!-- Logo added here (centered above title) -->
-    <div class="hero-text">
-      <img src="media/logo1.jpg" alt="Logo" class="hero-main-logo">
-      <h1>Unique &amp; High-Quality Creations</h1>
-      <p>Photography · Videos · Design</p>
-    </div>
-  </section>
+  <!-- Banner replaces header/nav -->
+  <header class="banner-header">
+    <img src="media/banner1.jpg" alt="Banner" class="banner-img">
+  </header>
 
   <main>
     <!-- Projects / Gallery -->
@@ -68,7 +44,6 @@
   <!-- Contact Section -->
   <section class="contact" id="contact" data-aos="fade-up">
     <h2>Contact</h2>
-    <!-- This form uses client-side JS to open the user's email client with a pre-filled message. -->
     <form class="contact-form" onsubmit="handleContact(event)" id="contactForm">
       <input id="c_name" type="text" name="name" placeholder="Your Name" required>
       <input id="c_email" type="email" name="email" placeholder="Your Email" required>
@@ -98,7 +73,7 @@
     </div>
   </div>
 
-  <!-- Video Lightbox (kept in case used elsewhere) -->
+  <!-- Video Lightbox -->
   <div id="videoLightbox" class="lightbox" onclick="closeVideoLightbox()">
     <div class="lightbox-inner" onclick="event.stopPropagation()">
       <video id="lightbox-video" controls playsinline></video>
@@ -112,10 +87,7 @@
   <!-- AOS JS -->
   <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
   <script>
-    AOS.init({
-      duration: 1200,
-      once: true
-    });
+    AOS.init({ duration: 1200, once: true });
   </script>
 </body>
 </html>
