@@ -78,6 +78,11 @@ function openVideoLightbox(src, key) {
   const vid = document.getElementById('lightbox-video');
   const reviewsPanel = document.getElementById('reviews-panel-video');
 
+  // If key wasn't provided, derive the filename from the src
+  if (!key && typeof src === 'string') {
+    key = src.split('/').pop();
+  }
+
   vid.src = src;
   vid.currentTime = 0;
   lb.style.display = 'flex';
@@ -103,6 +108,7 @@ function closeVideoLightbox() {
 function renderReviewsForKey(container, key) {
   container.innerHTML = ''; // clear
 
+  // if we still don't have a key, show 'no reviews' text
   if (!key) {
     container.innerHTML = '<div class="no-reviews">No reviews available for this project.</div>';
     return;
